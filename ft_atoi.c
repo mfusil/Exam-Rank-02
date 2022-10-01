@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_bits.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfusil <mfusil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 16:06:50 by mfusil            #+#    #+#             */
-/*   Updated: 2022/09/16 11:50:53 by mfusil           ###   ########.fr       */
+/*   Created: 2022/09/16 11:28:34 by mfusil            #+#    #+#             */
+/*   Updated: 2022/09/16 11:35:50 by mfusil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	print_bits(unsigned char octet)
+int	ft_atoi(const char *str)
 {
-	int				i;
-	unsigned char	bit;
+	int	nbr;
+	int	sign;
 
-	i = 8;
-	while (i--)
+	while ((*str >= 9 && *str <= 13) || *str == ' ')
+		str++;
+	sign = 1;
+	if (*str == '-' || *str == '+')
 	{
-		bit = (octet >> i & 1) + '0';
-		write(1, &bit, 1);
+		if (*str++ == '-')
+			sign = -1;
 	}
-}
-
-int	main(void)
-{
-	print_bits(2);
-	write(1, "\n", 1);
+	nbr = 0;
+	while (*str >= '0' && *str <= '9')
+		nbr = nbr * 10 + *str++ - '0';
+	if (sign)
+		nbr *= sign;
+	return (nbr);
 }

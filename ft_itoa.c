@@ -6,11 +6,12 @@
 /*   By: mfusil <mfusil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 12:17:18 by mfusil            #+#    #+#             */
-/*   Updated: 2022/09/14 12:49:35 by mfusil           ###   ########.fr       */
+/*   Updated: 2022/09/22 15:53:29 by mfusil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 
 char	*ft_string(char *s, long i, int len)
 {
@@ -19,7 +20,7 @@ char	*ft_string(char *s, long i, int len)
 		s[len--] = 48 + (i % 10);
 		i /= 10;
 	}
-	return (i);
+	return (s);
 }
 
 int	ft_len(int nbr)
@@ -57,5 +58,14 @@ char	*ft_itoa(int nbr)
 		s[0] = '-';
 	}
 	s = ft_string(s, i, len);
+	printf("%s\n", s);
 	return (s);
+}
+
+int	main(void)
+{
+	int	nbr;
+
+	nbr = 94494;
+	ft_itoa(nbr);
 }

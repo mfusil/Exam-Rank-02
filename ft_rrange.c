@@ -1,32 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_bits.c                                       :+:      :+:    :+:   */
+/*   ft_rrange.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mfusil <mfusil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/19 16:06:50 by mfusil            #+#    #+#             */
-/*   Updated: 2022/09/16 11:50:53 by mfusil           ###   ########.fr       */
+/*   Created: 2022/09/20 12:31:24 by mfusil            #+#    #+#             */
+/*   Updated: 2022/09/20 17:52:00 by mfusil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
 
-void	print_bits(unsigned char octet)
+int	*ft_rrange(int start, int end)
 {
-	int				i;
-	unsigned char	bit;
+	int	*tab;
+	int	i;
+	int	n;
 
-	i = 8;
-	while (i--)
+	i = 0;
+	n = end - start + 1;
+	if (n < 0)
+		n = n * -1;
+	tab = malloc (n * sizeof(int));
+	if (tab)
 	{
-		bit = (octet >> i & 1) + '0';
-		write(1, &bit, 1);
+		while (i < n)
+		{
+			tab[i] = end;
+			printf("%d\n", tab[i]);
+			end--;
+			i++;
+		}
 	}
+	return (tab);
 }
 
 int	main(void)
 {
-	print_bits(2);
-	write(1, "\n", 1);
+	ft_rrange(5, 3);
 }
